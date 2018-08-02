@@ -1,0 +1,17 @@
+server:
+  port: 7002
+eureka:
+  instance:
+    hostname: eureka-server
+    # 心跳时间间隔(默认30s)
+    lease-renewal-interval-in-seconds: 30
+  client:
+    register-with-eureka: false # 由于该应用为注册中心，所以设置为false，不必向自己注册
+    fetch-registry: false # 由于注册中心的职责就是维护服务的实例
+    serviceUrl:
+      defaultZone: http://eureka-server-master:7001/eureka/
+  server:
+      # 关闭保护机制
+      enable-self-preservation: false
+      # 剔除失效服务间隔
+      eviction-interval-timer-in-ms: 10000
